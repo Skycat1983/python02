@@ -1,9 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    ft_finally_block.py                                :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: helaouta <helaouta@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/03/12 14:02:50 by helaouta          #+#    #+#              #
+#    Updated: 2026/03/12 14:02:57 by helaouta         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 class Plant:
     def __init__(self, name: str) -> None:
         self.name = name
-
-
-
 
 def water_plants(plant_list: list[Plant])->None:
     print("Opening watering system")
@@ -18,11 +27,6 @@ def water_plants(plant_list: list[Plant])->None:
     finally:
         print("Closing watering system (cleanup)")
         
-
-
-
-
-
 if __name__ == "__main__":
     print("=== Garden Watering System ===\n")
 
