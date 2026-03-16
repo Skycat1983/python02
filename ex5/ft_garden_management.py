@@ -6,7 +6,7 @@
 #    By: helaouta <helaouta@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/12 15:32:42 by helaouta          #+#    #+#              #
-#    Updated: 2026/03/13 12:02:24 by helaouta         ###   ########.fr        #
+#    Updated: 2026/03/16 10:53:07 by helaouta         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,15 +44,19 @@ class GardenManager:
         return self._water
 
     def add_plant(self, name: str, water: int, sun: int) -> None:
-        self.validate_str(name)
-        self.validate_int("Water level", water, 10, 1)
-        self.validate_int("Sunlight hours", sun, 12, 2)
-
-        plant = Plant(name, water, sun)
-        plant_id = self._next_plant_id
-        self._plants[plant_id] = plant
-        self._next_plant_id += 1
-        print(f"Added {name} successfully")
+        # ? should this be in try block? why/why not? 
+        try:    
+            self.validate_str(name)
+            # ! should i validate water and sunlight on creation? 
+            # self.validate_int("Water level", water, 10, 1)
+            # self.validate_int("Sunlight hours", sun, 12, 2)
+            plant = Plant(name, water, sun)
+            plant_id = self._next_plant_id
+            self._plants[plant_id] = plant
+            self._next_plant_id += 1
+            print(f"Added {name} successfully")
+        except PlantError as e:
+            raise e
 
     def water_plant(self, plant: Plant) -> None:
         plant.water += 1
@@ -80,7 +84,15 @@ class GardenManager:
             try:
                 self.check_plant_health(plant)
             except PlantError as e:
-                print(f"Error checking {plant.name}: {e}")
+                raise e
+            
+    def check_water_status(self) -> None:
+        water = self.water
+        try:
+            self.validate_int("Water level", water, 10, 1)
+            print(f"Water level: {water}")
+        except WaterError as e:
+            raise e
 
     @staticmethod
     def validate_str(name: str) -> None:
@@ -96,17 +108,17 @@ class GardenManager:
 
 
 def test_garden_management() -> None:
-    manager = GardenManager(5)
+    manager = GardenManager(2)
 
     print("Adding plants to garden...")
 
     try:
-        manager.add_plant("tomato", 5, 8)
+        manager.add_plant("tomato", 4, 8)
     except GardenError as e:
         print(f"Error adding plant: {e}")
 
     try:
-        manager.add_plant("lettuce", 4, 6)
+        manager.add_plant("lettuce", 14, 5)
     except GardenError as e:
         print(f"Error adding plant: {e}")
 
@@ -126,6 +138,13 @@ def test_garden_management() -> None:
         manager.check_plants_health()
     except GardenError as e:
         print(f"Caught GardenError: {e}")
+
+    print("Testing error recovery...")
+    try:
+        manager.check_water_status()
+        # ? the example printout calls this a garden error. why not a water error?
+    except GardenError as e:
+        print(f"Caught Garden: {e}")
 
 
 if __name__ == "__main__":
