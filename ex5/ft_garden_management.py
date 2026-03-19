@@ -20,6 +20,7 @@ class Plant:
     def status(self) -> tuple[int, int]:
         return (self.water, self.sun)
 
+
 class GardenManager:
     def __init__(self, water: int) -> None:
         self._water = water
@@ -31,10 +32,10 @@ class GardenManager:
         return self._water
 
     def add_plant(self, name: str, water: int, sun: int) -> None:
-        # ? should this be in try block? why/why not? 
-        try:    
+        # ? should this be in try block? why/why not?
+        try:
             self.validate_str(name)
-            # ! should i validate water and sunlight on creation? 
+            # ! should i validate water and sunlight on creation?
             # self.validate_int("Water level", water, 10, 1)
             # self.validate_int("Sunlight hours", sun, 12, 2)
             plant = Plant(name, water, sun)
@@ -72,7 +73,7 @@ class GardenManager:
                 self.check_plant_health(plant)
             except PlantError as e:
                 raise e
-            
+
     def check_water_status(self) -> None:
         water = self.water
         try:
@@ -129,7 +130,7 @@ def test_garden_management() -> None:
     print("Testing error recovery...")
     try:
         manager.check_water_status()
-        # ? the example printout calls this a garden error. why not a water error?
+        # ? why not a water error?
     except GardenError as e:
         print(f"Caught Garden: {e}")
     finally:
