@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_garden_management.py                            :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: helaouta <helaouta@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/03/12 15:32:42 by helaouta          #+#    #+#              #
-#    Updated: 2026/03/16 10:53:07 by helaouta         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 class GardenError(Exception):
     pass
 
@@ -31,7 +19,6 @@ class Plant:
     @property
     def status(self) -> tuple[int, int]:
         return (self.water, self.sun)
-
 
 class GardenManager:
     def __init__(self, water: int) -> None:
@@ -145,6 +132,9 @@ def test_garden_management() -> None:
         # ? the example printout calls this a garden error. why not a water error?
     except GardenError as e:
         print(f"Caught Garden: {e}")
+    finally:
+        print("System recovered and continuing...\n")
+    print("Garden management system test complete!")
 
 
 if __name__ == "__main__":

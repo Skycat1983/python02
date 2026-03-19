@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_raise_errors.py                                 :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: helaouta <helaouta@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/03/12 14:02:40 by helaouta          #+#    #+#              #
-#    Updated: 2026/03/12 14:30:31 by helaouta         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 def check_plant_health(plant_name: str, water_level: int, sunlight_hours: int) -> str:
 
     if len(plant_name) == 0:
@@ -28,7 +16,6 @@ def check_plant_health(plant_name: str, water_level: int, sunlight_hours: int) -
         raise ValueError(f"Sunlight hours {sunlight_hours} is too high (max 12)")
 
     return f"Plant '{plant_name}' is healthy!"
-
 
 
 def test_plant_checks() -> None:
@@ -101,8 +88,6 @@ def test_plant_checks() -> None:
         print(check_plant_health("tomato", 5, 13))
     except ValueError as e:
         print("Error:", e)
-
-
 
 
 if __name__ == "__main__":

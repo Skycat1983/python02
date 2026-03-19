@@ -1,17 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_first_exception.py                              :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: helaouta <helaouta@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/03/09 15:26:22 by helaouta          #+#    #+#              #
-#    Updated: 2026/03/09 15:26:23 by helaouta         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-
-
 def check_temperature(temp_str: str) -> int:
     print("Testing temperature:", temp_str)
     try:
@@ -46,11 +32,7 @@ def test_temperature_input()->None:
         else:
             check_temperature(test)
 
-    # while
-
 
 if __name__ == "__main__":
     print("=== Garden Temperature Checker ===\n")
     test_temperature_input()
-    # temp = str(input("enter temp:"))
-

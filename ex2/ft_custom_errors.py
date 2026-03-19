@@ -1,29 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_custom_errors.py                                :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: helaouta <helaouta@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/03/09 15:26:06 by helaouta          #+#    #+#              #
-#    Updated: 2026/03/09 15:39:51 by helaouta         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-
-# Create these simple custom exception classes:
-# • GardenError - A basic error for garden problems
-# • PlantError - For problems with plants (inherits from GardenError)
-# • WaterError - For problems with watering (inherits from GardenError)
-# Each custom exception should:
-# • Be a simple class that inherits from Exception (or GardenError)
-# • Have a helpful error message
-# • Be easy to catch and handle
-# Create functions that:
-# • Raise your custom errors in different situations
-# • Show how to catch your specific error types
-# • Demonstrate that catching GardenError catches all garden-related errors
-
 class GardenError(Exception):
     pass
 
@@ -112,17 +86,3 @@ if __name__ == "__main__":
     test_water_error()
     test_garden_error()
     print("\nAll custom error types work correctly!")
-
-    # temp = str(input("enter temp:"))
-
-
-# $> python3 ft_custom_errors.py
-# === Custom Garden Errors Demo ===
-# Testing PlantError...
-# Caught PlantError: The tomato plant is wilting!
-# Testing WaterError...
-# Caught WaterError: Not enough water in the tank!
-# Testing catching all garden errors...
-# Caught a garden error: The tomato plant is wilting!
-# Caught a garden error: Not enough water in the tank!
-# All custom error types work correctly!
